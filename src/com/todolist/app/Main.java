@@ -11,7 +11,7 @@ public class Main {
                 "Teste",
                 LocalDate.now(),
                 3,
-                "Acelera",
+                "ZG",
                 TaskStatus.TODO
         );
 
@@ -20,7 +20,7 @@ public class Main {
                 "Teste",
                 LocalDate.now(),
                 1,
-                "Acelera",
+                "ZG",
                 TaskStatus.TODO
         );
 
@@ -38,7 +38,7 @@ public class Main {
                 "Teste",
                 LocalDate.now(),
                 3,
-                "Acelera",
+                "ZG",
                 TaskStatus.TODO
         );
 
@@ -52,17 +52,26 @@ public class Main {
         );
 
         manager.addTask(
-                "Tarefa A",
+                "Tarefa F",
                 "Teste",
                 LocalDate.now(),
                 3,
-                "Acelera",
+                "ZG",
+                TaskStatus.TODO
+        );
+
+        manager.addTask(
+                "Tarefa G",
+                "Teste",
+                LocalDate.now(),
+                2,
+                "ZG",
                 TaskStatus.TODO
         );
 
         manager.listAllTasks();
-        manager.removeTaskById(4);
-        System.out.println("Tarefa removida! Listagem de tarefas atualizada: ");
-        manager.listAllTasks();
+
+        System.out.println("---------Por Categoria----------");
+        manager.listTasksByCategory("ZG");
     }
 }

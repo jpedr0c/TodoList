@@ -6,7 +6,7 @@ public class Task {
     private int id;
     private String name;
     private String description;
-    private LocalDate date;
+    private LocalDate endDate;
     private int priority;
     private String category;
     private TaskStatus status;
@@ -14,14 +14,14 @@ public class Task {
     public Task(int id,
                 String name,
                 String description,
-                LocalDate date,
+                LocalDate endDate,
                 int priority,
                 String category,
                 TaskStatus status) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.endDate = endDate;
         this.priority = priority;
         this.category = category;
         this.status = status;
@@ -39,8 +39,8 @@ public class Task {
         return description;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public int getPriority() {
@@ -61,6 +61,6 @@ public class Task {
 
     @Override
     public String toString(){
-        return "ID: " + id + " | Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + date;
+        return "ID: " + id + " | Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + endDate;
     }
 }

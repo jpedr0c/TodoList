@@ -15,7 +15,7 @@ public class TaskManager {
 
     public void addTask(String name,
                         String description,
-                        LocalDate date,
+                        LocalDate endDate,
                         int priority,
                         String category,
                         TaskStatus status) {
@@ -24,7 +24,7 @@ public class TaskManager {
                 nextId,
                 name,
                 description,
-                date,
+                endDate,
                 priority,
                 category,
                 status
@@ -64,6 +64,21 @@ public class TaskManager {
 
         for (Task task : tasks) {
             System.out.println(task);
+        }
+    }
+
+    public void listTasksByCategory(String category){
+        boolean isFound = false;
+
+        for (Task task : tasks){
+            if (task.getCategory().equalsIgnoreCase(category)){
+                System.out.println(task);
+                isFound = true;
+            }
+        }
+
+        if (!isFound) {
+            System.out.println("Nenhuma tarefa foi encontrada para a categoria " + category);
         }
     }
 }
