@@ -30,7 +30,7 @@ public class Main {
                 LocalDate.now(),
                 2,
                 "Acelera",
-                TaskStatus.TODO
+                TaskStatus.DOING
         );
 
         manager.addTask(
@@ -39,7 +39,7 @@ public class Main {
                 LocalDate.now(),
                 3,
                 "ZG",
-                TaskStatus.TODO
+                TaskStatus.DOING
         );
 
         manager.addTask(
@@ -57,7 +57,7 @@ public class Main {
                 LocalDate.now(),
                 3,
                 "ZG",
-                TaskStatus.TODO
+                TaskStatus.DOING
         );
 
         manager.addTask(
@@ -66,7 +66,7 @@ public class Main {
                 LocalDate.now(),
                 2,
                 "ZG",
-                TaskStatus.TODO
+                TaskStatus.DONE
         );
 
         manager.listAllTasks();
@@ -75,6 +75,9 @@ public class Main {
         manager.listTasksByCategory("ZG");
 
         System.out.println("---------Por Prioridade----------");
-        manager.listTasksByPriority(5);
+        manager.listTasksByPriority(2);
+
+        System.out.println("---------Por Status----------");
+        manager.listTasksByStatus(TaskStatus.DOING);
     }
 }

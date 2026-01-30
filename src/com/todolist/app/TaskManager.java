@@ -101,4 +101,19 @@ public class TaskManager {
             System.out.println("Nenhuma tarefa foi encontrada com a prioridade " + priority);
         }
     }
+
+    public void listTasksByStatus(TaskStatus status){
+        boolean isFound = false;
+
+        for (Task task : tasks){
+            if (task.getStatus() == status){
+                System.out.println(task);
+                isFound = true;
+            }
+        }
+
+        if (!isFound) {
+            System.out.println("Nenhuma tarefa foi encontrada com a prioridade " + status);
+        }
+    }
 }
