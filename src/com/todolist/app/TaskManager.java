@@ -62,8 +62,8 @@ public class TaskManager {
             return;
         }
 
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println(i + " - " + tasks.get(i));
+        for (Task task : tasks) {
+            System.out.println(task);
         }
     }
 }
