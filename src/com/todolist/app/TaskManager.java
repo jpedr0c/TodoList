@@ -81,4 +81,24 @@ public class TaskManager {
             System.out.println("Nenhuma tarefa foi encontrada para a categoria " + category);
         }
     }
+
+    public void listTasksByPriority(int priority){
+        boolean isFound = false;
+
+        if (priority < 1 || priority > 5){
+            System.out.println("Nível de prioridade inexistente! Prioridade somente de 1 a 5, tente novamente.");
+            return;
+        }
+
+        for (Task task : tasks){
+            if (task.getPriority() == priority){
+                System.out.println(task);
+                isFound = true;
+            }
+        }
+
+        if (!isFound) {
+            System.out.println("Nenhuma tarefa foi encontrada com a prioridade " + priority);
+        }
+    }
 }

@@ -73,5 +73,8 @@ public class Main {
 
         System.out.println("---------Por Categoria----------");
         manager.listTasksByCategory("ZG");
+
+        System.out.println("---------Por Prioridade----------");
+        manager.listTasksByPriority(5);
     }
 }
