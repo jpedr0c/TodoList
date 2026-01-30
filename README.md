@@ -4,9 +4,19 @@ Projeto de uma aplicação **TODO List em Java**, desenvolvida para gerenciament
 
 O sistema permite criar, listar e remover tarefas, utilizando **ID gerado automaticamente**, menu interativo por **recursão** e datas no **padrão brasileiro**.
 
+<br>
+
 ## 👤 Autor
 
-**João Pedro Cardoso de Carvalho**
+#### João Pedro Cardoso de Carvalho
+
+##### Redes sociais:
+
+- Instagram: [@eujp.cardoso](https://www.instagram.com/eujp.cardoso/)
+- Linkedin: [@jpedroc](https://www.linkedin.com/in/jpedroc/)
+- Email: [jpccarvalho2210@gmail.com](mailto:jpccarvalho2210@gmail.com)
+
+<br>
 
 ## 🎯 Objetivo do Projeto
 
@@ -20,12 +30,16 @@ O objetivo deste projeto é praticar e consolidar conhecimentos em:
 - Entrada de dados via terminal
 - Boas práticas de versionamento com Git/GitHub
 
+<br>
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **Java 25**
 - **Java Collections (ArrayList)**
 - **Java Time API (LocalDate, DateTimeFormatter)**
 - **Git e GitHub**
+
+<br>
 
 ## 📌 Funcionalidades Implementadas
 
@@ -35,6 +49,8 @@ O objetivo deste projeto é praticar e consolidar conhecimentos em:
 ✔ Listar todas as tarefas  
 ✔ Menu interativo implementado por **recursão**  
 ✔ Datas no formato brasileiro (**dd/MM/yyyy**)  
+
+<br>
 
 ## 📋 Estrutura da Tarefa
 
@@ -47,6 +63,8 @@ Cada tarefa possui os seguintes atributos:
 - **Prioridade**
 - **Categoria**
 - **Status** (TODO, DOING, DONE)
+
+<br>
 
 ## ▶️ Como Executar o Projeto
 
@@ -76,6 +94,7 @@ javac src/com/todolist/app/*.java
 java src/com/todolist/app/Main.java
 ```
 
+<br>
 
 ## 🚧 Melhorias Futuras (TODO)
 
@@ -90,6 +109,8 @@ java src/com/todolist/app/Main.java
 - [ ] Carregar tarefas automaticamente ao iniciar o sistema
 
 - [ ] Interface gráfica (FrontEnd)
+
+<br>
 
 ## 📚 Observações Finais
 
