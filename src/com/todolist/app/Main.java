@@ -4,15 +4,32 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Task task = new Task(
-                "Terminar a trilha de Java",
-                "Falta somente finalizar o ZG-Hero Project",
-                LocalDate.of(2026, 1, 29),
-                1,
-                "Estudos",
-                TaskStatus.TODO
-        );
+        TaskManager manager = new TaskManager();
 
-        System.out.println(task);
+        manager.addTask(new Task(
+                "Tarefa A", "Teste",
+                LocalDate.now(), 3, "Acelera", TaskStatus.TODO));
+
+        manager.addTask(new Task(
+                "Tarefa B", "Teste",
+                LocalDate.now(), 1, "Acelera", TaskStatus.TODO));
+
+        manager.addTask(new Task(
+                "Tarefa C", "Teste",
+                LocalDate.now(), 2, "Acelera", TaskStatus.TODO));
+
+        manager.addTask(new Task(
+                "Tarefa D", "Teste",
+                LocalDate.now(), 3, "Acelera", TaskStatus.DOING));
+
+        manager.addTask(new Task(
+                "Tarefa E", "Teste",
+                LocalDate.now(), 1, "Acelera", TaskStatus.TODO));
+
+        manager.addTask(new Task(
+                "Tarefa F", "Teste",
+                LocalDate.now(), 3, "Acelera", TaskStatus.DONE));
+
+        manager.listAllTasks();
     }
 }
