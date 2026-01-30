@@ -79,5 +79,8 @@ public class Main {
 
         System.out.println("---------Por Status----------");
         manager.listTasksByStatus(TaskStatus.DOING);
+
+        System.out.println("---------Contagem por status----------");
+        manager.countTasksByStatus();
     }
 }

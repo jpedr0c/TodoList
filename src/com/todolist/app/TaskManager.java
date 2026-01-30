@@ -116,4 +116,24 @@ public class TaskManager {
             System.out.println("Nenhuma tarefa foi encontrada com a prioridade " + status);
         }
     }
+
+    public void countTasksByStatus(){
+        int todo = 0;
+        int doing = 0;
+        int done = 0;
+
+        for (Task task : tasks) {
+            if (task.getStatus() == TaskStatus.TODO){
+                todo++;
+            } else if (task.getStatus() == TaskStatus.DOING) {
+                doing++;
+            } else if (task.getStatus() == TaskStatus.DONE) {
+                done++;
+            }
+        }
+
+        System.out.println("TODO: " + todo +
+                           "\nDOING: " + doing +
+                           "\nDONE: " + done);
+    }
 }
