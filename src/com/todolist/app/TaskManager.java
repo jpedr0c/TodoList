@@ -44,6 +44,18 @@ public class TaskManager {
         tasks.add(position, newTask);
     }
 
+    public void removeTaskById(int id) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getId() == id) {
+                System.out.println("Tarefa removida: " + tasks.get(i));
+                tasks.remove(i);
+                return;
+            }
+        }
+
+        System.out.println("Tarefa com ID " + id + " não encontrada.");
+    }
+
     public void listAllTasks() {
         if (tasks.isEmpty()) {
             System.out.println("Nenhuma tarefa cadastrada.");

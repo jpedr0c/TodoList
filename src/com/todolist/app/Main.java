@@ -61,5 +61,8 @@ public class Main {
         );
 
         manager.listAllTasks();
+        manager.removeTaskById(4);
+        System.out.println("Tarefa removida! Listagem de tarefas atualizada: ");
+        manager.listAllTasks();
     }
 }
