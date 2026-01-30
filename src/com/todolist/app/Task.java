@@ -1,6 +1,7 @@
 package com.todolist.app;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
     private int id;
@@ -61,6 +62,7 @@ public class Task {
 
     @Override
     public String toString(){
-        return "ID: " + id + " | Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + endDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "ID: " + id + " | Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + endDate.format(formatter);
     }
 }

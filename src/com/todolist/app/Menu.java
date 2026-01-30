@@ -1,10 +1,13 @@
 package com.todolist.app;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Menu {
     private TaskManager manager;
     private Scanner scanner;
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Menu(TaskManager manager) {
         this.manager = manager;
@@ -26,7 +29,7 @@ public class Menu {
         String option = scanner.nextLine();
 
         if (option.equals("1")) {
-            System.out.println("Chamar método para adicionar tarefa");
+            getInfosToCreateTask();
         } else if (option.equals("2")) {
             manager.listAllTasks();
         } else if (option.equals("3")) {
@@ -58,5 +61,37 @@ public class Menu {
         }
 
         showMenu();
+    }
+
+    public void getInfosToCreateTask() {
+        System.out.print("Nome: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Descrição: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Data limite (dd/MM/yyyy): ");
+        LocalDate endDate = LocalDate.parse(scanner.nextLine(), DATE_FORMATTER);
+
+        System.out.print("Prioridade (1-5): ");
+        int priority = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Categoria: ");
+        String category = scanner.nextLine();
+
+        System.out.print("Status (TODO, DOING, DONE): ");
+        TaskStatus status = TaskStatus.valueOf(scanner.nextLine().toUpperCase());
+
+        manager.addTask(
+                name,
+                description,
+                endDate,
+                priority,
+                category,
+                status
+        );
+
+        System.out.println("Tarefa adicionada com sucesso!");
     }
 }
