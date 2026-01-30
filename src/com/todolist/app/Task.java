@@ -3,6 +3,7 @@ package com.todolist.app;
 import java.time.LocalDate;
 
 public class Task {
+    private int id;
     private String name;
     private String description;
     private LocalDate date;
@@ -10,18 +11,24 @@ public class Task {
     private String category;
     private TaskStatus status;
 
-    public Task(String name,
+    public Task(int id,
+                String name,
                 String description,
                 LocalDate date,
                 int priority,
                 String category,
                 TaskStatus status) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.priority = priority;
         this.category = category;
         this.status = status;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -54,6 +61,6 @@ public class Task {
 
     @Override
     public String toString(){
-        return "Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + date;
+        return "ID: " + id + " | Nome: " + name + " | Prioridade: " + priority + " | Categoria: " + category + " | Status: " + status + " | Data limite: " + date;
     }
 }
