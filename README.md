@@ -100,6 +100,8 @@ java src/com/todolist/app/Main.java
 
 #### Algumas melhorias planejadas para evolução do projeto:
 
+- [ ] Trocar a lógica do menu de if para switch case
+
 - [ ] Validação mais robusta das entradas do usuário
 
 - [ ] Atualizar tarefas existentes
