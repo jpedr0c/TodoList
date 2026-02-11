@@ -16,7 +16,7 @@ body{
 }
 
 .container{
-    max-width: 100rem;
+    max-width: 65rem;
     margin: 0 auto;
 }
 
@@ -73,4 +73,58 @@ body{
 
 .btn-new-task:active {
     transform: translateY(0);
+}
+
+.tabs {
+    display: flex;
+    gap: .6rem;
+    margin-bottom: 2.4rem;
+    background: rgba(230, 230, 230, 0.4);
+    padding: .4rem;
+    border-radius: 1.6rem;
+}
+
+.tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    padding: .6rem .6rem;
+    background: transparent;
+    color: rgb(97, 97, 97);
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tab:hover {
+    color: #111827;
+    font-weight: 600;
+}
+
+.tab.active {
+    background: white;
+    color: #111827;
+    font-weight: 600;
+}
+
+.tab.active .badge {
+    background: #EFF6FF;
+    color: #3B82F6;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    background: #E5E7EB;
+    color: #374151;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
