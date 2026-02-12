@@ -175,33 +175,10 @@ body{
     margin-bottom: .8rem;
 }
 
-.task-checkbox {
-    width: 2.4rem;
-    height: 2.4rem;
-    border: 2px solid #D1D5DB;
-    border-radius: 50%;
-    cursor: pointer;
-    flex-shrink: 0;
-    position: relative;
-    margin-top: .2rem;
-}
-
-.task-checkbox.checked {
-    background: var(--status-done);
-    border-color: var(--status-done);
-}
-
-.task-checkbox.checked::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 1.2rem;
-    height: 1.2rem;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3L4.5 8.5L2 6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
+.task-header svg{
+    width: 2.8rem;
+    height: 2.8rem;
+    color: #D1D5DB;
 }
 
 .task-content {
@@ -261,12 +238,12 @@ body{
 
 .task-actions {
     display: flex;
-    gap: .8rem;
+    gap: 1rem;
 }
 
 .task-action-btn {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,10 +251,6 @@ body{
     border-radius: .8rem;
     background: transparent;
     cursor: pointer;
-}
-
-.task-action-btn:hover {
-    background: #F3F4F6;
 }
 
 .task-action-btn.edit:hover {
@@ -288,4 +261,49 @@ body{
 .task-action-btn.delete:hover {
     background: #FEE2E2;
     color: #EF4444;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 1.6rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.empty-state.show {
+    display: flex;
+}
+
+.empty-state .circle svg {
+    width: 4rem;
+    height: 4rem;
+    color: #9CA3AF;
+}
+
+.empty-state .circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3F4F6;
+    border-radius: 10rem;
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 2rem;
+}
+
+.empty-state h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: .8rem;
+}
+
+.empty-state p {
+    font-size: 1.4rem;
+    color: #6B7280;
 }
