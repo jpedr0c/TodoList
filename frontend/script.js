@@ -16,6 +16,33 @@ btnNewTask.addEventListener("click", () => openNewTaskModal());
 btnCancel.addEventListener("click", () => closeModal());
 btnCloseModal.addEventListener("click", () => closeModal());
 
+
+// function closeModal2(){
+//     console.log("Close Modal 2 funcionando");
+//     if (taskModal.classList.contains("show")) {
+//         console.log("Entrei no if do modal 2");
+//         taskModal.addEventListener('click', (e) => {
+//             if (e.target === taskModal) {
+//                 console.log("Clicando fora");
+//                 closeModal();
+//             }
+//         });
+//     }
+// }
+
+function handleOutsideClick(e) {
+    if (e.target === taskModal) {
+        closeModal();
+    }
+}
+
+function closeModalOutsideClick() {
+    taskModal.removeEventListener('click', handleOutsideClick);
+    taskModal.addEventListener('click', handleOutsideClick);
+}
+
+closeModalOutsideClick();
+
 function closeModal() {
     taskModal.classList.remove('show');
     taskForm.reset();
