@@ -1,34 +1,29 @@
 lucide.createIcons();
 
+const tasks = [];
+let lastId = 0;
+
 let btnNewTask = document.getElementById("btnNewTask");
 let btnCancel = document.getElementById("btnCancel");
+let btnSubmit = document.getElementById("btnSubmit");
 let btnCloseModal = document.getElementById("btnCloseModal");
 let modalTitle = document.getElementById("modalTitle");
 let taskModal = document.getElementById('taskModal');
 let taskForm = document.getElementById('taskForm');
 let taskTitle = document.getElementById('taskTitle');
 let taskDescription = document.getElementById('taskDescription');
+let taskCategory = document.getElementById('taskCategory');
 let taskStatus = document.getElementById('taskStatus');
 let taskPriority = document.getElementById('taskPriority');
 
 
 btnNewTask.addEventListener("click", () => openNewTaskModal());
 btnCancel.addEventListener("click", () => closeModal());
+btnSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    createTask();
+});
 btnCloseModal.addEventListener("click", () => closeModal());
-
-
-// function closeModal2(){
-//     console.log("Close Modal 2 funcionando");
-//     if (taskModal.classList.contains("show")) {
-//         console.log("Entrei no if do modal 2");
-//         taskModal.addEventListener('click', (e) => {
-//             if (e.target === taskModal) {
-//                 console.log("Clicando fora");
-//                 closeModal();
-//             }
-//         });
-//     }
-// }
 
 function handleOutsideClick(e) {
     if (e.target === taskModal) {
@@ -65,3 +60,44 @@ function openNewTaskModal() {
         taskTitle.focus();
     }
 }
+
+function saveTask() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function generateId() {
+    lastId = lastId + 1;
+    return lastId;
+}
+
+function createTask() {
+    const newTask = {
+        id: generateId(),
+        title: taskTitle.value.trim(),
+        description: taskDescription ? taskDescription.value.trim() : '',
+        category: taskCategory.value.trim(),
+        status: taskStatus.value,
+        priority: taskPriority.value,
+        createdAt: new Date().toISOString()
+    };
+
+    if (!newTask.title || !newTask.category) {
+        alert("Preencha o título e a categoria da tarefa.");
+        return;
+    }
+
+    tasks.push(newTask);
+
+    closeModal();
+    saveTask();
+}
+
+function loadTasks() {
+    const storedTasks = localStorage.getItem("tasks");
+
+    if (storedTasks) {
+        tasks.push(...JSON.parse(storedTasks));
+    }
+}
+
+loadTasks();
