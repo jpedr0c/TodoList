@@ -236,6 +236,11 @@ body{
     color: rgba(255, 0, 0, 0.7);
 }
 
+.task-badge.category {
+    background: rgba(0, 60, 255, 0.1);
+    color: rgba(19, 19, 19, 0.9);
+}
+
 .task-actions {
     display: flex;
     gap: 1rem;
@@ -264,7 +269,7 @@ body{
 }
 
 .empty-state {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -325,7 +330,6 @@ body{
 
 .modal.show {
     display: flex;
-    /*animation: fadeIn 0.3s ease;*/
 }
 
 .modal-content {
