@@ -226,19 +226,39 @@ body{
     font-weight: 600;
 }
 
-.task-badge.status {
-    background: rgba(245, 158, 11, 0.1);
-    color: rgba(245, 158, 11, 0.7);
+.task-badge.status.todo {
+    background-color: #fff0b3;
+    color: #92400E;
 }
 
-.task-badge.priority {
-    background: rgba(255, 0, 0, 0.1);
-    color: rgba(255, 0, 0, 0.7);
+.task-badge.status.doing {
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.task-badge.status.done {
+    background-color: #DCFCE7;
+    color: #166534;
+}
+
+.task-badge.priority.baixa {
+    background: #EFF6FF;
+    color: #1E40AF;
+}
+
+.task-badge.priority.media {
+    background-color: #fff2d0;
+    color: #944e23;
+}
+
+.task-badge.priority.alta {
+    background: #FEE2E2;
+    color: #991B1B;
 }
 
 .task-badge.category {
-    background: rgba(0, 60, 255, 0.1);
-    color: rgba(19, 19, 19, 0.9);
+    background: rgba(67, 56, 202, 0.8);
+    color: #f5f9ff;
 }
 
 .task-actions {

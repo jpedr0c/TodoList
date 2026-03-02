@@ -3,21 +3,23 @@ lucide.createIcons();
 const tasks = [];
 let lastId = 0;
 let isEditingTask = false;
+let currentFilter = "all";
 
-let btnNewTask = document.getElementById("btnNewTask");
-let btnCancel = document.getElementById("btnCancel");
-let btnSubmit = document.getElementById("btnSubmit");
-let btnCloseModal = document.getElementById("btnCloseModal");
-let modalTitle = document.getElementById("modalTitle");
-let taskModal = document.getElementById('taskModal');
-let taskForm = document.getElementById('taskForm');
-let tasksList = document.getElementById('tasksList');
-let taskTitle = document.getElementById('taskTitle');
-let taskDescription = document.getElementById('taskDescription');
-let taskCategory = document.getElementById('taskCategory');
-let taskStatus = document.getElementById('taskStatus');
-let taskPriority = document.getElementById('taskPriority');
-let emptyState = document.getElementById('emptyState');
+const btnNewTask = document.getElementById("btnNewTask");
+const btnCancel = document.getElementById("btnCancel");
+const btnSubmit = document.getElementById("btnSubmit");
+const btnCloseModal = document.getElementById("btnCloseModal");
+const modalTitle = document.getElementById("modalTitle");
+const taskModal = document.getElementById('taskModal');
+const taskForm = document.getElementById('taskForm');
+const tasksList = document.getElementById('tasksList');
+const taskTitle = document.getElementById('taskTitle');
+const taskDescription = document.getElementById('taskDescription');
+const taskCategory = document.getElementById('taskCategory');
+const taskStatus = document.getElementById('taskStatus');
+const taskPriority = document.getElementById('taskPriority');
+const emptyState = document.getElementById('emptyState');
+const tabs = document.querySelectorAll('.tab');
 
 btnNewTask.addEventListener("click", () => openNewTaskModal());
 btnCancel.addEventListener("click", () => closeModal());
@@ -55,10 +57,10 @@ function openNewTaskModal() {
     taskForm.reset();
 
     if (taskStatus) {
-        taskStatus.value = 'A fazer';
+        taskStatus.value = 'todo';
     }
     if (taskPriority) {
-        taskPriority.value = 'Média';
+        taskPriority.value = 'media';
     }
 
     taskModal.classList.add('show');
@@ -117,6 +119,17 @@ renderTasks();
 // localStorage.clear();
 
 function createTaskCard(task) {
+    const statusLabel = {
+        todo: "A Fazer",
+        doing: "Em Progresso",
+        done: "Concluído"
+    }
+
+    const priorityLabel = {
+        baixa: "Baixa",
+        media: "Média",
+        alta: "Alta"
+    }
     return `
         <div class="task-card" data-id="${task.id}">
           <div class="task-header">
@@ -128,8 +141,8 @@ function createTaskCard(task) {
           </div>
           <div class="task-footer">
             <div class="task-badges">
-              <span class="task-badge status">${task.status}</span>
-              <span class="task-badge priority">${task.priority}</span>
+              <span class="task-badge status ${task.status}">${statusLabel[task.status]}</span>
+              <span class="task-badge priority ${task.priority}">${priorityLabel[task.priority]}</span>
               <span class="task-badge category">${task.category}</span>
             </div>
             <div class="task-actions">
@@ -146,7 +159,30 @@ function createTaskCard(task) {
 }
 
 function getFilteredTasks() {
-    return tasks;
+    if (currentFilter === 'all') {
+        return tasks;
+    }
+
+    return tasks.filter(task => task.status.toLowerCase() === currentFilter);
+}
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+
+        tab.classList.add('active');
+
+        currentFilter = tab.dataset.filter;
+
+        renderTasks();
+    });
+});
+
+function updateBadges() {
+    document.getElementById('badgeAll').textContent = tasks.length;
+    document.getElementById('badgeTodo').textContent = tasks.filter(t => t.status === 'todo').length;
+    document.getElementById('badgeDoing').textContent = tasks.filter(t => t.status === 'doing').length;
+    document.getElementById('badgeDone').textContent = tasks.filter(t => t.status === 'done').length;
 }
 
 function renderTasks() {
@@ -166,4 +202,5 @@ function renderTasks() {
         .join('');
 
     lucide.createIcons();
+    updateBadges();
 }
