@@ -2,6 +2,7 @@ lucide.createIcons();
 
 const tasks = [];
 let isEditingTask = false;
+let editingTaskId = null;
 let currentFilter = "all";
 
 const btnNewTask = document.getElementById("btnNewTask");
@@ -26,13 +27,28 @@ btnSubmit.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (isEditingTask) {
-        console.log("Editando a tarefa");
+        console.log("Tarefa editada");
+        updateTask();
     } else {
         createTask();
     }
 });
 
 btnCloseModal.addEventListener("click", () => closeModal());
+
+function addEditEvents() {
+    const editButtons = document.querySelectorAll(".task-action-btn.edit");
+
+    editButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const taskId = Number(button.dataset.id);
+            const task = tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            openEditTaskModal(task);
+        });
+    });
+}
 
 function handleOutsideClick(e) {
     if (e.target === taskModal) {
@@ -50,6 +66,8 @@ closeModalOutsideClick();
 function closeModal() {
     taskModal.classList.remove('show');
     taskForm.reset();
+    isEditingTask = false;
+    editingTaskId = null;
 }
 
 function openNewTaskModal() {
@@ -133,10 +151,10 @@ function createTaskCard(task) {
         media: "Média",
         alta: "Alta"
     }
+
     return `
         <div class="task-card ${task.status}" data-id="${task.id}">
           <div class="task-header">
-            <i data-lucide="circle" data-id="${task.id}"></i>
             <div class="task-content">
               <h3 class="task-title">${task.title}</h3>
               <p class="task-description">${task.description}</p>
@@ -236,4 +254,44 @@ function renderTasks() {
     lucide.createIcons();
     updateBadges();
     addDeleteEvents();
+    addEditEvents();
+}
+
+function openEditTaskModal(task) {
+    isEditingTask = true;
+    editingTaskId = task.id;
+
+    modalTitle.textContent = "Editar Tarefa";
+
+    taskTitle.value = task.title;
+    taskDescription.value = task.description;
+    taskCategory.value = task.category;
+    taskStatus.value = task.status;
+    taskPriority.value = task.priority;
+
+    taskModal.classList.add("show");
+    taskTitle.focus();
+}
+
+function updateTask() {
+    const task = tasks.find(t => t.id === editingTaskId);
+    if (!task) return;
+
+    if (!taskTitle.value.trim() || !taskCategory.value.trim()) {
+        alert("O título da tarefa e a categoria são obrigatórios!");
+        return;
+    }
+
+    task.title = taskTitle.value.trim();
+    task.description = taskDescription.value.trim();
+    task.category = taskCategory.value.trim();
+    task.status = taskStatus.value;
+    task.priority = taskPriority.value;
+
+    saveTask();
+    renderTasks();
+    closeModal();
+
+    isEditingTask = false;
+    editingTaskId = null;
 }
