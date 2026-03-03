@@ -32,6 +32,7 @@ btnSubmit.addEventListener("click", (e) => {
         createTask();
     }
 });
+
 btnCloseModal.addEventListener("click", () => closeModal());
 
 function handleOutsideClick(e) {
@@ -116,7 +117,6 @@ function loadTasks() {
 
 loadTasks();
 renderTasks();
-// localStorage.clear();
 
 function createTaskCard(task) {
     const statusLabel = {
@@ -185,12 +185,41 @@ function updateBadges() {
     document.getElementById('badgeDone').textContent = tasks.filter(t => t.status === 'done').length;
 }
 
+function deleteTask(id) {
+    const confirmed = confirm("Deseja realmente excluir esta tarefa?");
+    if (!confirmed){
+        return;
+    }
+
+    const index = tasks.findIndex(task => task.id === id);
+    if (index === -1) {
+        return;
+    }
+
+    tasks.splice(index, 1);
+
+    saveTask();
+    renderTasks();
+}
+
+function addDeleteEvents() {
+    const deleteButtons = document.querySelectorAll(".task-action-btn.delete");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const taskId = Number(button.dataset.id);
+            deleteTask(taskId);
+        });
+    });
+}
+
 function renderTasks() {
     const filteredTasks = getFilteredTasks();
 
     if (filteredTasks.length === 0) {
         tasksList.style.display = 'none';
         emptyState.classList.add('show');
+        updateBadges();
         return;
     }
 
@@ -203,4 +232,5 @@ function renderTasks() {
 
     lucide.createIcons();
     updateBadges();
+    addDeleteEvents();
 }
