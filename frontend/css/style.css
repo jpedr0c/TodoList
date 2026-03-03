@@ -11,8 +11,8 @@
     --primary-blue-hover: #2563EB;
     --primary-blue-light: #EFF6FF;
 
-    --status-todo: #8B5CF6;
-    --status-doing: #F59E0B;
+    --status-todo: #F59E0B;
+    --status-doing: #2b79f8;
     --status-done: #10B981;
 }
 
@@ -161,7 +161,19 @@ body{
     top: 0;
     bottom: 0;
     width: .4rem;
+    opacity: 0.8;
+}
+
+.task-card.todo::before {
+    background: var(--status-todo);
+}
+
+.task-card.doing::before {
     background: var(--status-doing);
+}
+
+.task-card.done::before {
+    background: var(--status-done);
 }
 
 .task-card:hover {

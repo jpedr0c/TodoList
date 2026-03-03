@@ -1,7 +1,6 @@
 lucide.createIcons();
 
 const tasks = [];
-let lastId = 0;
 let isEditingTask = false;
 let currentFilter = "all";
 
@@ -77,8 +76,12 @@ function saveTask() {
 }
 
 function generateId() {
-    lastId = lastId + 1;
-    return lastId;
+    const lastIdFromStorage = Number(localStorage.getItem("lastTaskId")) || 0;
+    const newId = lastIdFromStorage + 1;
+
+    localStorage.setItem("lastTaskId", newId);
+
+    return newId;
 }
 
 function createTask() {
@@ -131,7 +134,7 @@ function createTaskCard(task) {
         alta: "Alta"
     }
     return `
-        <div class="task-card" data-id="${task.id}">
+        <div class="task-card ${task.status}" data-id="${task.id}">
           <div class="task-header">
             <i data-lucide="circle" data-id="${task.id}"></i>
             <div class="task-content">
